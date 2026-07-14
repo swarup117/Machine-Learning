@@ -105,7 +105,7 @@ print("\nPredicted Salary for 12 Years Experience:")
 print(new_prediction[0])
 
 # ===============================
-# 11. Visualization
+# 11. Visualization of the data
 # ===============================
 
 plt.figure(figsize=(8,5))

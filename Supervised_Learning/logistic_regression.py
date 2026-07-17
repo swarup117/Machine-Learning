@@ -135,3 +135,15 @@ scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 
 X_test = scaler.transform(X_test)
+
+# ==========================================
+# 7. Create Model
+# ==========================================
+
+model = LogisticRegression()
+
+# ==========================================
+# 8. Train Model
+# ==========================================
+
+model.fit(X_train, y_train)

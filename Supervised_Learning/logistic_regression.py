@@ -147,3 +147,74 @@ model = LogisticRegression()
 # ==========================================
 
 model.fit(X_train, y_train)
+
+# ==========================================
+# 9. Predict Test Data
+# ==========================================
+
+y_pred = model.predict(X_test)
+
+print("\nActual Values")
+print(y_test.values)
+
+print("\nPredicted Values")
+print(y_pred)
+
+# ==========================================
+# 10. Evaluate Model
+# ==========================================
+
+accuracy = accuracy_score(y_test, y_pred)
+
+precision = precision_score(y_test, y_pred)
+
+recall = recall_score(y_test, y_pred)
+
+f1 = f1_score(y_test, y_pred)
+
+print("\nModel Evaluation")
+print("----------------------------")
+print("Accuracy :", accuracy)
+print("Precision:", precision)
+print("Recall   :", recall)
+print("F1 Score :", f1)
+
+# ==========================================
+# 11. Confusion Matrix
+# ==========================================
+
+cm = confusion_matrix(y_test, y_pred)
+
+display = ConfusionMatrixDisplay(
+    confusion_matrix=cm,
+    display_labels=["Fail","Pass"]
+)
+
+display.plot()
+
+plt.title("Confusion Matrix")
+
+plt.show()
+
+# ==========================================
+# 12. Predict New Student
+# ==========================================
+
+new_student = pd.DataFrame({
+    "StudyHours":[6],
+    "Attendance":[90],
+    "PreviousMarks":[82],
+    "Assignments":[8],
+    "Internet":[1],
+    "ExtraClasses":[1],
+    "SleepHours":[7]
+})
+
+new_student = scaler.transform(new_student)
+
+prediction = model.predict(new_student)
+
+if prediction[0] == 1:
+    print("\nPrediction : PASS")
+else:
+    print("\nPrediction : FAIL")

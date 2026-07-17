@@ -91,3 +91,47 @@ df = pd.DataFrame({
 })
 
 print(df.head())
+
+# ==========================================
+# 3. Encode Categorical Variables
+# ==========================================
+
+encoder = LabelEncoder()
+
+df["Internet"] = encoder.fit_transform(df["Internet"])
+
+df["ExtraClasses"] = encoder.fit_transform(df["ExtraClasses"])
+
+# ==========================================
+# 4. Separate Features and Target
+# ==========================================
+
+X = df.drop("Pass", axis=1)
+
+y = df["Pass"]
+
+# ==========================================
+# 5. Train-Test Split
+# ==========================================
+
+X_train, X_test, y_train, y_test = train_test_split(
+
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+
+)
+
+print("\nTraining Shape:", X_train.shape)
+print("Testing Shape:", X_test.shape)
+
+# ==========================================
+# 6. Feature Scaling
+# ==========================================
+
+scaler = StandardScaler()
+
+X_train = scaler.fit_transform(X_train)
+
+X_test = scaler.transform(X_test)

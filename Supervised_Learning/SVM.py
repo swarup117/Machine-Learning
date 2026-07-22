@@ -253,3 +253,17 @@ new_transaction = pd.DataFrame({
     "NumTransactionsToday":[14]
 
 })
+
+new_transaction = scaler.transform(new_transaction)
+
+prediction = model.predict(new_transaction)
+
+if prediction[0] == 1:
+
+    print("\nPrediction : FRAUD TRANSACTION")
+
+else:
+
+    print("\nPrediction : NORMAL TRANSACTION")
+
+print("completio n of SVM")
